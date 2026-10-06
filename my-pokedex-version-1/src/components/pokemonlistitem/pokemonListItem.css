@@ -1,0 +1,28 @@
+.pokemon-list-item {
+    display: grid;
+    grid-template-columns: 60px 1fr 30px;
+    align-items: center;
+
+    padding: 12px 8px;
+
+    border-bottom: 1px solid #175746;
+
+    color: #7df5c5;
+
+    cursor: pointer;
+}
+
+.pokemon-list-item strong {
+    font-weight: 600;
+}
+
+.pokemon-list-item:hover {
+    background: rgba(77, 255, 190, 0.08);
+}
+
+.pokemon-list-item--active {
+    background: rgba(74, 255, 156, 0.08);
+
+    border: 2px solid #4aff9c;
+    border-radius: 5px;
+}

@@ -1,0 +1,136 @@
+.pokemon-details {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            rgba(30, 255, 190, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(30, 255, 190, 0.035) 1px,
+            transparent 1px
+        ),
+        #061c1b;
+
+    background-size: 20px 20px;
+
+    color: #7df5c5;
+
+    border: 10px solid #bec8c8;
+    border-radius: 14px;
+
+    padding: 18px 28px;
+
+    box-shadow:
+        inset 0 0 25px rgba(0, 0, 0, 0.8),
+        0 4px 0 #79051b;
+
+    overflow: hidden;
+}
+
+
+/* HEADER */
+
+.pokemon-details header {
+    margin: 0 0 4px;
+}
+
+.pokemon-details__number {
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.pokemon-details__name {
+    margin: 2px 0 0;
+
+    font-size: 26px;
+    line-height: 1;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+/* IMAGE */
+
+.pokemon-details__image {
+    height: 135px;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokemon-details__image img {
+    width: 135px;
+    height: 135px;
+
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.pokemon-details__image span {
+    font-size: 80px;
+    opacity: 0.5;
+}
+
+
+/* TYPES */
+
+.pokemon-details__types {
+    margin: 2px 0 12px;
+
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.pokemon-details__type {
+    display: inline-block;
+
+    padding: 5px 14px;
+
+    background: #ffd52a;
+    color: #111;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+/* INFO */
+
+.pokemon-details__info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+
+    margin: 0;
+    padding: 8px 12px;
+
+    border: 1px solid #2ebf9a;
+    border-radius: 5px;
+
+    font-size: 13px;
+}
+
+.pokemon-details__info dt {
+    font-weight: 700;
+}
+
+.pokemon-details__info dd {
+    margin: 0 0 0 20px;
+}
+
+.pokemon-details__info dt,
+.pokemon-details__info dd {
+    line-height: 1.5;
+}
