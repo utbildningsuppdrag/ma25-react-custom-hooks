@@ -7,7 +7,7 @@ function App() {
   return (
     <section 
       className="app"
-      style={{ backgroundImage : `url(${bg})`}}
+      style={ { backgroundImage : `url(${bg})` } }
     >
       <Pokedex />
     </section>

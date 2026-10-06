@@ -30,13 +30,14 @@
 
 .pokedex__right {
     height: calc(100% - 110px);
-
     margin-top: 110px;
     padding: 25px;
-
     border-radius: 8px 28px 28px 8px;
-
     overflow: hidden;
+
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    gap: 15px;
 }
 
 

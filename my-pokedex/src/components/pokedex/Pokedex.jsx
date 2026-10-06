@@ -1,59 +1,32 @@
+import { useFetch } from '../../hooks/useFetch';
 import PokemonDetails from '../pokemondetails/PokemonDetails';
 import PokemonList from '../pokemonlist/PokemonList';
 import PokemonSearch from '../pokemonsearch/PokemonSearch';
 import SeenCounter from '../seencounter/SeenCounter';
 import './pokedex.css';
+import { useSeenPokemon } from '../../hooks/useSeenPokemon';
 
 import { useEffect, useState } from 'react';
 
 const Pokedex = () => {
     const [activePokemon, setActivePokemon] = useState(null);
     const [search, setSearch] = useState('');
-    const [details, setDetails] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const [seenPokemon, setSeenPokemon] = useState([]);
 
-    useEffect(() => {
-        if (!activePokemon) return;
+    const { 
+        data : details, 
+        loading, 
+        error 
+    } = useFetch(
+        activePokemon
+        ? `https://pokeapi.co/api/v2/pokemon/${activePokemon}`
+        : null
+    );
 
-        const fetchPokemon = async () => {
-            try {
-                setLoading(true);
-
-                const response = await fetch(
-                    `https://pokeapi.co/api/v2/pokemon/${activePokemon}`
-                );
-
-                if (!response.ok) {
-                    throw new Error('Could not fetch data');
-                }
-
-                const data = await response.json();
-
-                setDetails(data);
-                setError(null);
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchPokemon();
-    }, [activePokemon]);
-
-    const toggleSeen = (id) => {
-        setSeenPokemon((current) =>
-            current.includes(id)
-                ? current.filter((pokemonId) => pokemonId !== id)
-                : [...current, id]
-        );
-    };
-
-    const isSeen = (id) => {
-        return seenPokemon.includes(id);
-    };
+    const {
+        seenPokemon,
+        toggleSeen,
+        isSeen
+    } = useSeenPokemon();
 
     return (
         <article className="pokedex">

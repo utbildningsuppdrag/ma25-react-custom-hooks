@@ -1,38 +1,12 @@
 import { useEffect, useState } from 'react';
 import PokemonListItem from '../pokemonlistitem/PokemonListItem';
 import './pokemonList.css';
+import { useFetch } from '../../hooks/useFetch';
 
 const PokemonList = ({ setActivePokemon, search, isSeen }) => {
-    const [pokemonList, setPokemonList] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const { data, loading, error } = useFetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0');
 
-    useEffect(() => {
-        const fetchPokemon = async () => {
-            try {
-                setLoading(true);
-
-                const response = await fetch(
-                    'https://pokeapi.co/api/v2/pokemon?limit=151&offset=0'
-                );
-
-                if (!response.ok) {
-                    throw new Error('Could not fetch data');
-                }
-
-                const data = await response.json();
-
-                setPokemonList(data.results);
-                setError(null);
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchPokemon();
-    }, []);
+    const pokemonList = data?.results || [];
 
     const filteredPokemon = pokemonList.filter((pokemon) =>
         pokemon.name
